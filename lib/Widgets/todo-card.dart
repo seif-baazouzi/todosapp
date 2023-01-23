@@ -22,10 +22,14 @@ class TodoCard extends StatelessWidget {
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(todo.todo),
-                todo.done
-                    ? const Icon(Icons.done, color: Colors.green)
-                    : const Icon(Icons.close, color: Colors.red)
+                Text(
+                  todo.todo,
+                  style: TextStyle(
+                    decoration: todo.done
+                        ? TextDecoration.lineThrough
+                        : TextDecoration.none,
+                  ),
+                ),
               ]),
         ),
       ),
