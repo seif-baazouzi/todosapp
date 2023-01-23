@@ -57,7 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _addTodo(String todo) {
     setState(() {
-      todos.add(Todo(todo: todo, done: false));
+      todo = todo.trim();
+      if (todo != "") todos.add(Todo(todo: todo, done: false));
     });
   }
 

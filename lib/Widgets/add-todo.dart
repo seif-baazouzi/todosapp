@@ -25,6 +25,7 @@ class _AddTodoState extends State<AddTodo> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
               TextField(
+                maxLength: 120,
                 controller: _todoController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
