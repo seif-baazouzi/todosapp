@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todosapp/Models/todo.dart';
+import 'package:todosapp/Widgets/add-todo.dart';
 import 'package:todosapp/Widgets/todos-list.dart';
 
 void main() {
@@ -38,6 +39,20 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(child: TodosList(todos: todos)),
+      floatingActionButton: FloatingActionButton(
+        onPressed: showAddTodoPopup,
+        child: const Icon(Icons.add),
+      ),
     );
+  }
+
+  void showAddTodoPopup() {
+    showDialog(context: context, builder: (ctx) => AddTodo(addTodo: _addTodo));
+  }
+
+  void _addTodo(String todo) {
+    setState(() {
+      todos.add(Todo(todo: todo, done: false));
+    });
   }
 }
