@@ -38,7 +38,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: TodosList(todos: todos)),
+      body: Center(
+        child: TodosList(
+          todos: todos,
+          toggleTodoDone: _toggleTodoDone,
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: showAddTodoPopup,
         child: const Icon(Icons.add),
@@ -53,6 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void _addTodo(String todo) {
     setState(() {
       todos.add(Todo(todo: todo, done: false));
+    });
+  }
+
+  void _toggleTodoDone(index) {
+    setState(() {
+      todos[index].done = !todos[index].done;
     });
   }
 }

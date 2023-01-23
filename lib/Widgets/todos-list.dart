@@ -4,10 +4,12 @@ import 'package:todosapp/Widgets/todo-card.dart';
 
 class TodosList extends StatelessWidget {
   final List<Todo> todos;
+  final Function(int) toggleTodoDone;
 
   const TodosList({
     super.key,
     required this.todos,
+    required this.toggleTodoDone,
   });
 
   @override
@@ -16,7 +18,10 @@ class TodosList extends StatelessWidget {
       width: 500,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[...todos.map((todo) => TodoCard(todo: todo))],
+        children: <Widget>[
+          for (var i = 0; i < todos.length; i++)
+            TodoCard(todo: todos[i], index: i, toggleTodoDone: toggleTodoDone)
+        ],
       ),
     );
   }
