@@ -5,12 +5,15 @@ class TodoCard extends StatelessWidget {
   final Todo todo;
   final int index;
   final Function(int) toggleTodoDone;
+  final Function(int) deleteTodo;
 
-  const TodoCard(
-      {super.key,
-      required this.todo,
-      required this.index,
-      required this.toggleTodoDone});
+  const TodoCard({
+    super.key,
+    required this.todo,
+    required this.index,
+    required this.toggleTodoDone,
+    required this.deleteTodo,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +36,13 @@ class TodoCard extends StatelessWidget {
                           : TextDecoration.none,
                     ),
                   ),
+                  IconButton(
+                    onPressed: () => deleteTodo(index),
+                    icon: const Icon(
+                      Icons.delete_outlined,
+                      color: Colors.red,
+                    ),
+                  )
                 ]),
           ),
         ),

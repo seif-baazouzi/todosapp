@@ -44,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: TodosList(
             todos: todos,
             toggleTodoDone: _toggleTodoDone,
+            deleteTodo: _deleteTodo,
           ),
         ),
         floatingActionButton: FloatingActionButton(
@@ -68,6 +69,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void _toggleTodoDone(index) {
     setState(() {
       todos[index].done = !todos[index].done;
+    });
+  }
+
+  void _deleteTodo(index) {
+    setState(() {
+      todos.removeAt(index);
     });
   }
 }
