@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:todosapp/lang.dart' as lang;
+
 class AddTodo extends StatefulWidget {
   final Function(String) addTodo;
 
@@ -22,19 +24,24 @@ class _AddTodoState extends State<AddTodo> {
           color: Colors.white,
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              TextField(
-                maxLength: 120,
-                controller: _todoController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  label: Text("Todo"),
+              Directionality(
+                textDirection: TextDirection.rtl,
+                child: TextField(
+                  maxLength: 120,
+                  autofocus: true,
+                  textAlign: TextAlign.right,
+                  controller: _todoController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    label: Text(lang.todo),
+                  ),
                 ),
               ),
               TextButton(
                 onPressed: () => addTodoCallback(context),
-                child: const Text("Add Todo"),
+                child: const Text(lang.addTodo),
               )
             ],
           ),

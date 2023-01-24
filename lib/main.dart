@@ -37,16 +37,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: TodosList(
-          todos: todos,
-          toggleTodoDone: _toggleTodoDone,
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        body: Center(
+          child: TodosList(
+            todos: todos,
+            toggleTodoDone: _toggleTodoDone,
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: showAddTodoPopup,
-        child: const Icon(Icons.add),
+        floatingActionButton: FloatingActionButton(
+          onPressed: showAddTodoPopup,
+          child: const Icon(Icons.add),
+        ),
       ),
     );
   }
