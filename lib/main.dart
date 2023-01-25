@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todosapp/Models/todo.dart';
 import 'package:todosapp/Widgets/add-todo.dart';
 import 'package:todosapp/Widgets/todos-list.dart';
+import 'package:todosapp/Widgets/todos-status.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,10 +42,16 @@ class _MyHomePageState extends State<MyHomePage> {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         body: Center(
-          child: TodosList(
-            todos: todos,
-            toggleTodoDone: _toggleTodoDone,
-            deleteTodo: _deleteTodo,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              TodosStatus(todos: todos),
+              TodosList(
+                todos: todos,
+                toggleTodoDone: _toggleTodoDone,
+                deleteTodo: _deleteTodo,
+              ),
+            ],
           ),
         ),
         floatingActionButton: FloatingActionButton(

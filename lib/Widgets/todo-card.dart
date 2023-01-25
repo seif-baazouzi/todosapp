@@ -22,29 +22,26 @@ class TodoCard extends StatelessWidget {
       child: Card(
         child: Container(
           padding: const EdgeInsetsDirectional.all(20),
-          child: Directionality(
-            textDirection: TextDirection.rtl,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    todo.todo,
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      decoration: todo.done
-                          ? TextDecoration.lineThrough
-                          : TextDecoration.none,
-                    ),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  todo.todo,
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    decoration: todo.done
+                        ? TextDecoration.lineThrough
+                        : TextDecoration.none,
                   ),
-                  IconButton(
-                    onPressed: () => deleteTodo(index),
-                    icon: const Icon(
-                      Icons.delete_outlined,
-                      color: Colors.red,
-                    ),
-                  )
-                ]),
-          ),
+                ),
+                IconButton(
+                  onPressed: () => deleteTodo(index),
+                  icon: const Icon(
+                    Icons.delete_outlined,
+                    color: Colors.red,
+                  ),
+                )
+              ]),
         ),
       ),
     );
