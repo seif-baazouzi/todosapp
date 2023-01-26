@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todosapp/Models/todo.dart';
 import 'package:todosapp/Widgets/add-todo.dart';
+import 'package:todosapp/Widgets/empty-list.dart';
 import 'package:todosapp/Widgets/todos-list.dart';
 import 'package:todosapp/Widgets/todos-status.dart';
 
@@ -31,10 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Todo> todos = [
-    Todo(todo: "First Todo", done: true),
-    Todo(todo: "Other todo", done: false),
-  ];
+  List<Todo> todos = [];
 
   @override
   Widget build(BuildContext context) {
@@ -44,14 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TodosStatus(todos: todos),
-              TodosList(
-                todos: todos,
-                toggleTodoDone: _toggleTodoDone,
-                deleteTodo: _deleteTodo,
-              ),
-            ],
+            children: getBodyContent(),
           ),
         ),
         floatingActionButton: FloatingActionButton(
@@ -60,6 +51,19 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  List<Widget> getBodyContent() {
+    return todos.isNotEmpty
+        ? <Widget>[
+            TodosStatus(todos: todos),
+            TodosList(
+              todos: todos,
+              toggleTodoDone: _toggleTodoDone,
+              deleteTodo: _deleteTodo,
+            ),
+          ]
+        : [const EmptyList()];
   }
 
   void showAddTodoPopup() {
