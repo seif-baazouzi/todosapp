@@ -18,17 +18,20 @@ class TodosList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 500,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          for (var i = 0; i < todos.length; i++)
-            TodoCard(
-              todo: todos[i],
-              index: i,
-              toggleTodoDone: toggleTodoDone,
-              deleteTodo: deleteTodo,
-            )
-        ],
+      height: 360,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            for (var i = 0; i < todos.length; i++)
+              TodoCard(
+                todo: todos[i],
+                index: i,
+                toggleTodoDone: toggleTodoDone,
+                deleteTodo: deleteTodo,
+              )
+          ],
+        ),
       ),
     );
   }
