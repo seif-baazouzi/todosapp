@@ -23,17 +23,14 @@ class TodoCard extends StatelessWidget {
         child: Container(
           padding: const EdgeInsetsDirectional.all(20),
           child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
-                  todo.todo,
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    decoration: todo.done
-                        ? TextDecoration.lineThrough
-                        : TextDecoration.none,
-                  ),
+                Checkbox(
+                  value: todo.done,
+                  onChanged: (bool? value) => toggleTodoDone(index),
                 ),
+                Text(todo.todo),
+                const Spacer(),
                 IconButton(
                   onPressed: () => deleteTodo(index),
                   icon: const Icon(
